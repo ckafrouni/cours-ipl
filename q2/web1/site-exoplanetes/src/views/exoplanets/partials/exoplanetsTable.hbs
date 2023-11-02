@@ -1,0 +1,37 @@
+<!--suppress SyntaxError -->
+<div class="filterform">
+    <form method="get" action="/exoplanets/filter">
+        <label>
+            <select name="h_class">
+                <option value="Mésoplanète"> Mésoplanète</option>
+                <option value="Psychroplanète">Psychroplanète</option>
+                <option value="Thermoplanète">Thermoplanète</option>
+                <option value="Hypopsychroplanète">Hypopsychroplanète</option>
+                <option value="Non Habitable">Non Habitable</option>
+            </select>
+        </label>
+        <input type="submit" value="hClassFilter">
+    </form>
+    <form method="get" action="/exoplanets/filter">
+        <label>
+            <input type="number" min="2000" max="2025" step="1" value="2022" name="discovery_year"/>
+        </label>
+        <input type="submit" value="discoveryYearFilter">
+    </form>
+</div>
+<table>
+    <tr>
+        <th>Id Exoplanète</th>
+        <th>Nom Exoplanète</th>
+        <th>hClass</th>
+        <th>Année de découverte</th>
+    </tr>
+    {{#each exoplanetsTable}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td><a href="/exoplanets/details?id={{this.id}}">{{this.unique_name}}</a></td>
+            <td>{{this.h_class}} </td>
+            <td>{{this.discovery_year}} </td>
+        </tr>
+    {{/each}}
+</table>

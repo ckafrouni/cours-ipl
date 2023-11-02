@@ -1,0 +1,12 @@
+<form method="get" action="/exoplanets/search">
+    <label>
+        <input type="text" name="unique_name">
+    </label>
+    <input type="submit">
+</form>
+
+{{#if exoplanet}}
+    {{exoplanet.unique_name}}
+{{else}}
+    <p>Aucun résultat</p>
+{{/if}}

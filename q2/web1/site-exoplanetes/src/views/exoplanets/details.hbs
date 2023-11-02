@@ -1,0 +1,36 @@
+<section>
+    <h2>Détails d'une Exoplanète </h2>
+
+    {{#if id_error}}
+        <p class="error-message"> Erreur l'id n'est pas un entier</p>
+    {{else}}
+        {{#if exoplanet}}
+            <table>
+                <tr>
+                    <th>ID Exoplanète</th>
+                    <th>Nom Exoplanète</th>
+                    <th>hClass</th>
+                    <th>Année de découverte</th>
+                    <th>IST</th>
+                    <th>pClass</th>
+                </tr>
+                <tr>
+                    <td>{{exoplanet.id}} </td>
+                    <td>{{exoplanet.unique_name}} </td>
+                    <td>{{exoplanet.h_class}} </td>
+                    <td>{{exoplanet.discovery_year}} </td>
+                    <td>{{exoplanet.ist}} </td>
+                    <td>{{exoplanet.p_class}} </td>
+                    <td>
+                        <form method="GET" action="/exoplanets/update">
+                            <input type="hidden" name="id" value="{{exoplanet.id}}">
+                            <input type="submit" value="Mettre à jour">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        {{else}}
+            <p class="warning-message"> Aucune Exoplanète pour cet ID !</p>
+        {{/if}}
+    {{/if}}
+</section>

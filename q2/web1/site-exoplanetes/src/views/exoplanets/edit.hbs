@@ -1,0 +1,51 @@
+<section>
+    {{#if id_error}}
+        <p class="error-message"> Erreur l'id n'est pas un entier</p>
+    {{else if exoplanet}}
+        <form method="POST" action="/exoplanets/update">
+            <div>
+                <label for="idField">ID :</label>
+                <input id="idField" type="number" readonly name="id" value="{{exoplanet.id}}">
+            </div>
+
+            <div>
+                <label for="uniqueNameField">uniqueName :</label>
+                <input id="uniqueNameField" type="text" name="unique_name" value="{{exoplanet.unique_name}}">
+            </div>
+
+            <div>
+                <label for="hClassField">hClass :</label>
+                <select id="hClassField" name="h_class">
+                    <option value="Mésoplanète"> Mésoplanète</option>
+                    <option value="Psychroplanète">Psychroplanète</option>
+                    <option value="Thermoplanète">Thermoplanète</option>
+                    <option value="Hypopsychroplanète">Hypopsychroplanète</option>
+                    <option value="Non Habitable">Non Habitable</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="discoveryDateField">Discovery date :</label>
+                <input id="discoveryDateField" type="number" min="2000" max="2025" step="1"
+                       name="discovery_year" value="{{exoplanet.discovery_year}}">
+            </div>
+
+            <div>
+                <label for="istField">IST :</label>
+                <input id="istField" type="number" step="0.01" name="ist" value="{{exoplanet.ist}}">
+            </div>
+
+            <div>
+                <label for="pClassField">pClass :</label>
+                <select id="pClassField" name="p_class">
+                    <option value="Sous-terrienne chaude"> Sous-terrienne chaude</option>
+                </select>
+            </div>
+
+
+            <input type="submit" value="Mettre à jour">
+        </form>
+    {{else}}
+        <p class="warning-message"> Aucune Exoplanète pour cet ID !</p>
+    {{/if}}
+</section>

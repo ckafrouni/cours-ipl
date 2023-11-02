@@ -1,0 +1,44 @@
+<section>
+    <h2>Forum de discussion</h2>
+    <table>
+        <tr>
+            <th>Id Message</th>
+            <th>Message</th>
+            <th>Auteur</th>
+            <th>Nb. de Likes</th>
+            <th>Envie de liker ?</th>
+        </tr>
+        {{#each messagesTable}}
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.message}}</td>
+                <td>{{this.author}} </td>
+                <td>{{this.likes}} </td>
+                <td>
+                    <form action="/forum/like" method="POST">
+                        <button type="submit" name="id" value="{{this.id}}">Like</button>
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+</section>
+
+<section>
+    <h2>Laissez un message</h2>
+
+    <form method="post" action="/forum/add">
+
+        <div>
+            <label for="authorField">Auteur :</label>
+            <input id="authorField" type="text" name="author">
+        </div>
+
+        <div>
+            <label for="messageField">Message :</label>
+            <textarea id="messageField" name="message"></textarea>
+        </div>
+
+        <input type="submit">
+    </form>
+</section>
